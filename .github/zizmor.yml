@@ -1,0 +1,8 @@
+# The reusable workflows of this org are called by tag until the first release exists; Renovate then
+# pins them to a commit SHA (and this exception can go). Everything else must be pinned by SHA.
+rules:
+  unpinned-uses:
+    config:
+      policies:
+        homelab-selfuryon/*: ref-pin
+        "*": hash-pin

@@ -1,0 +1,10 @@
+# octo-sts trust policy `devenv-update`: the token the scheduled devenv-update workflow uses to open
+# the `devenv update` PR on this repository (so CI runs on it; a GITHUB_TOKEN would not).
+issuer: https://token.actions.githubusercontent.com
+subject_pattern: repo:homelab-selfuryon@353728095/notes-api@[0-9]+:ref:refs/heads/main
+claim_pattern:
+  event_name: schedule|workflow_dispatch
+  job_workflow_ref: homelab-selfuryon/github-workflows/\.github/workflows/devenv-update\.yaml@.+
+permissions:
+  contents: write
+  pull_requests: write

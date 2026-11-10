@@ -1,0 +1,6 @@
+# Everything is excluded; the Containerfile names what it copies.
+*
+!Cargo.toml
+!Cargo.lock
+!src
+!migrations

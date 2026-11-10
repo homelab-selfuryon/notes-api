@@ -1,0 +1,11 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["local>homelab-selfuryon/.github"],
+  "packageRules": [
+    {
+      "description": "The Containerfile build stage and rust-toolchain.toml name the same Rust version (devenv test checks it): one PR.",
+      "matchDepNames": ["rust"],
+      "groupName": "rust toolchain"
+    }
+  ]
+}

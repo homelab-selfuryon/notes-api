@@ -1,0 +1,19 @@
+name: Release Please
+
+# Merging to main only prepares the release: this opens (or updates) a release PR with the
+# changelog. Merging that PR creates the tag v<version>, which starts release.yaml. The token
+# comes from octo-sts (see .github/chainguard/release-please.sts.yaml), because a tag created
+# with GITHUB_TOKEN would not trigger workflows.
+
+on:
+  push:
+    branches: [main]
+
+permissions: {}
+
+jobs:
+  release-please:
+    permissions:
+      contents: read
+      id-token: write # octo-sts
+    uses: homelab-selfuryon/github-workflows/.github/workflows/release-please.yaml@v1.0.1

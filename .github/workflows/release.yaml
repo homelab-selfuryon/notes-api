@@ -1,0 +1,19 @@
+name: Release
+
+# A tag v* releases: image, SBOM, provenance, manifests for staging and prod, and a PR in gitops
+# that moves staging. Runs in the GitHub Environment "staging" (tags v* only).
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions: {}
+
+jobs:
+  release:
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+      attestations: write
+    uses: homelab-selfuryon/github-workflows/.github/workflows/app-release.yaml@v1.0.1

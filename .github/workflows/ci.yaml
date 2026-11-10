@@ -1,0 +1,54 @@
+name: CI
+
+# Thin caller: the logic is in homelab-selfuryon/github-workflows. Renovate pins the
+# reusable workflows to a commit SHA once the first release exists.
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions: {}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  rust-ci:
+    permissions:
+      contents: read
+      packages: read
+    uses: homelab-selfuryon/github-workflows/.github/workflows/rust-ci.yaml@v1.0.1
+
+  lint-workflows:
+    permissions:
+      contents: read
+    uses: homelab-selfuryon/github-workflows/.github/workflows/lint-workflows.yaml@v1.0.1
+
+  # A preview per pull request: image, manifests, signed with the preview
+  # identity. Not for forks: they must not get a token that can push.
+  preview:
+    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+    needs: rust-ci
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+    uses: homelab-selfuryon/github-workflows/.github/workflows/app-preview.yaml@v1.0.1
+
+  # The single required status check (branch ruleset in platform-terraform/github).
+  final-check:
+    if: always()
+    needs: [rust-ci, lint-workflows, preview]
+    runs-on: ubuntu-26.04
+    timeout-minutes: 5
+    permissions: {}
+    steps:
+      - name: Require every job to have succeeded or been skipped
+        env:
+          RESULTS: ${{ join(needs.*.result, ' ') }}
+        run: |
+          for r in $RESULTS; do
+            case "$r" in success|skipped) ;; *) echo "a required job ended with: $r"; exit 1 ;; esac
+          done

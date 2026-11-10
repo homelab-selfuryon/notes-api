@@ -1,0 +1,12 @@
+# octo-sts trust policy: the token release-please uses on this repository (https://github.com/octo-sts/app).
+# Release-please needs a token that is not GITHUB_TOKEN, so that the release PR triggers CI and the
+# tag it creates triggers release.yaml. Only the reusable release-please workflow, running on main, gets it.
+#
+# After "Use this template": replace the repository name in `subject_pattern`.
+issuer: https://token.actions.githubusercontent.com
+subject_pattern: repo:homelab-selfuryon@353728095/notes-api@[0-9]+:ref:refs/heads/main
+claim_pattern:
+  job_workflow_ref: homelab-selfuryon/github-workflows/\.github/workflows/release-please\.yaml@.+
+permissions:
+  contents: write
+  pull_requests: write

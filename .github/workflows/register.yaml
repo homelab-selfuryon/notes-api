@@ -1,0 +1,18 @@
+name: Register
+
+# Registers the app in gitops (apps/<team>/<app>/app.cue) with a PR; a no-op PR when it is
+# already registered. The reusable workflow authenticates with octo-sts (identity app-register),
+# which only issues a token to repositories with the custom property kind=app.
+
+on:
+  push:
+    branches: [main]
+
+permissions: {}
+
+jobs:
+  register:
+    permissions:
+      contents: read
+      id-token: write # octo-sts
+    uses: homelab-selfuryon/github-workflows/.github/workflows/app-register.yaml@v1.0.1

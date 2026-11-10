@@ -1,0 +1,33 @@
+name: Promote
+
+# Moves prod to a released version. Run it from the Actions tab and choose the release tag in
+# "Use workflow from" (a branch is refused). Opens a PR in gitops; the owning team approves it.
+
+on:
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  guard:
+    runs-on: ubuntu-26.04
+    timeout-minutes: 2
+    permissions: {}
+    steps:
+      - name: Refuse anything but a release tag
+        env:
+          REF_TYPE: ${{ github.ref_type }}
+          REF_NAME: ${{ github.ref_name }}
+        run: |
+          if [[ "${REF_TYPE}" != tag || ! "${REF_NAME}" =~ ^v[0-9]+\.[0-9]+\.[0-9]+(-[0-9A-Za-z.-]+)?$ ]]; then
+            echo "::error::run this workflow on a release tag (vX.Y.Z) via 'Use workflow from', not on ${REF_TYPE} ${REF_NAME}"
+            exit 1
+          fi
+
+  promote:
+    needs: guard
+    permissions:
+      contents: read
+      packages: read
+      id-token: write
+    uses: homelab-selfuryon/github-workflows/.github/workflows/app-promote.yaml@v1.0.1

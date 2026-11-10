@@ -1,0 +1,16 @@
+name: Update
+
+on:
+  schedule:
+    - cron: "0 6 * * 1" # weekly, Monday
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  devenv:
+    permissions:
+      contents: read
+      id-token: write # octo-sts (policy: .github/chainguard/devenv-update.sts.yaml)
+    # Renovate will pin this to a SHA after the first release of github-workflows.
+    uses: homelab-selfuryon/github-workflows/.github/workflows/devenv-update.yaml@v1.0.1

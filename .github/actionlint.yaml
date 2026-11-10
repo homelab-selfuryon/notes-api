@@ -1,0 +1,5 @@
+# GitHub-hosted `ubuntu-26.04` (GA 2026-09-17) is newer than the runner label list of actionlint
+# 1.7.12. Declare it here; drop this file once actionlint knows the label.
+self-hosted-runner:
+  labels:
+    - ubuntu-26.04
