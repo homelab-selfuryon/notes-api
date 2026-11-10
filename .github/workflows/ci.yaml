@@ -27,9 +27,10 @@ jobs:
     uses: homelab-selfuryon/github-workflows/.github/workflows/lint-workflows.yaml@v1.0.1
 
   # A preview per pull request: image, manifests, signed with the preview
-  # identity. Not for forks: they must not get a token that can push.
+  # identity. Not for forks: they must not get a token that can push. Not in the
+  # template itself (not an app).
   preview:
-    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository
+    if: github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && !github.event.repository.is_template
     needs: rust-ci
     permissions:
       contents: read

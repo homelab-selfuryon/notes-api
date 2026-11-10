@@ -11,6 +11,8 @@ permissions: {}
 
 jobs:
   release:
+    # Not in the template itself: it is not an app (kind=platform), octo-sts refuses it.
+    if: ${{ !github.event.repository.is_template }}
     permissions:
       contents: read
       packages: write

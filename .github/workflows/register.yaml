@@ -12,7 +12,10 @@ permissions: {}
 
 jobs:
   register:
+    # Not in the template itself: it is not an app (kind=platform), octo-sts refuses it.
+    if: ${{ !github.event.repository.is_template }}
     permissions:
       contents: read
+      packages: read # platform-kit for cue
       id-token: write # octo-sts
     uses: homelab-selfuryon/github-workflows/.github/workflows/app-register.yaml@v1.0.1
