@@ -10,6 +10,8 @@ permissions: {}
 
 jobs:
   guard:
+    # Not in the template itself: it is not an app (kind=platform), octo-sts refuses it.
+    if: ${{ !github.event.repository.is_template }}
     runs-on: ubuntu-26.04
     timeout-minutes: 2
     permissions: {}
