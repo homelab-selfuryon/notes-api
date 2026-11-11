@@ -18,4 +18,4 @@ jobs:
       packages: write
       id-token: write
       attestations: write
-    uses: homelab-selfuryon/github-workflows/.github/workflows/app-release.yaml@v1.0.1
+    uses: homelab-selfuryon/github-workflows/.github/workflows/app-release.yaml@c49b40a6acc765b064daff0e0e8e9c3bc6486a37 # v1.0.1
