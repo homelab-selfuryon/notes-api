@@ -1,4 +1,9 @@
-use std::{net::SocketAddr, sync::Arc, sync::atomic::Ordering, time::Duration};
+use std::{
+    net::{Ipv6Addr, SocketAddr},
+    sync::Arc,
+    sync::atomic::Ordering,
+    time::Duration,
+};
 
 use anyhow::{Context, Result};
 use notes_api::{
@@ -32,7 +37,9 @@ async fn main() -> Result<()> {
     let store = Arc::new(PgStore::connect_lazy(&uri, config.db_max_connections)?);
 
     let delay = config.shutdown_delay;
-    let addr = SocketAddr::from(([0, 0, 0, 0], config.port));
+    // `[::]`: IPv6 and, with the Linux default bindv6only=0, IPv4 too. The cluster is IPv6-first:
+    // an IPv4-only listener refuses the kubelet probes on the pod's IPv6 address.
+    let addr = SocketAddr::from((Ipv6Addr::UNSPECIFIED, config.port));
     let state = AppState::new(config, verifier, store.clone());
     let ready = state.ready.clone();
     let app = routes::router(state);
