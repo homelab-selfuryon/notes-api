@@ -19,12 +19,12 @@ jobs:
     permissions:
       contents: read
       packages: read
-    uses: homelab-selfuryon/github-workflows/.github/workflows/rust-ci.yaml@v1.0.1
+    uses: homelab-selfuryon/github-workflows/.github/workflows/rust-ci.yaml@c49b40a6acc765b064daff0e0e8e9c3bc6486a37 # v1.0.1
 
   lint-workflows:
     permissions:
       contents: read
-    uses: homelab-selfuryon/github-workflows/.github/workflows/lint-workflows.yaml@v1.0.1
+    uses: homelab-selfuryon/github-workflows/.github/workflows/lint-workflows.yaml@c49b40a6acc765b064daff0e0e8e9c3bc6486a37 # v1.0.1
 
   # A preview per pull request: image, manifests, signed with the preview
   # identity. Not for forks: they must not get a token that can push. Not in the
@@ -36,7 +36,7 @@ jobs:
       contents: read
       packages: write
       id-token: write
-    uses: homelab-selfuryon/github-workflows/.github/workflows/app-preview.yaml@v1.0.1
+    uses: homelab-selfuryon/github-workflows/.github/workflows/app-preview.yaml@c49b40a6acc765b064daff0e0e8e9c3bc6486a37 # v1.0.1
 
   # The single required status check (branch ruleset in platform-terraform/github).
   final-check:
