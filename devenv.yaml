@@ -18,7 +18,7 @@ inputs:
       nixpkgs:
         follows: nixpkgs
   platform-kit:
-    url: github:homelab-selfuryon/platform-kit/v0.1.1
+    url: github:homelab-selfuryon/platform-kit/v0.1.4
     flake: false
 imports:
   - platform-kit/devenv/rust-app.nix

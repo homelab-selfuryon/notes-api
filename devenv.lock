@@ -93,16 +93,16 @@
     "platform-kit": {
       "flake": false,
       "locked": {
-        "lastModified": 1794169487,
-        "narHash": "sha256-QQU1e+TppTcUjIK6d89M6dwjoUC8Cld6416MAFyRMmE=",
+        "lastModified": 1794412025,
+        "narHash": "sha256-hC++apmIxb5BBXahDPp0Q01V0ng6yEwrLmXFJIhPvz0=",
         "owner": "homelab-selfuryon",
         "repo": "platform-kit",
-        "rev": "2dec79ae562a4d13a82fa7ecf5f32016b41d7d45",
+        "rev": "bac1e567cec731f8247fa6012ff1acd0b3c802a4",
         "type": "github"
       },
       "original": {
         "owner": "homelab-selfuryon",
-        "ref": "v0.1.1",
+        "ref": "v0.1.4",
         "repo": "platform-kit",
         "type": "github"
       }
