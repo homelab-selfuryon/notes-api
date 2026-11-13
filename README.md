@@ -71,5 +71,5 @@ curl -s localhost:8080/v1/notes -d '{"title":"hello"}' -H 'content-type: applica
 `devenv update` and commit it; refresh it the same way (Renovate has no devenv manager).
 Against an unpublished platform-kit: `devenv -o platform-kit path:../platform-kit test`.
 
-Delivery (preview per pull request, release-please, tag → staging, promote → prod, register) is the
+Delivery (preview per pull request labelled `preview`, release-please, tag → staging, promote → prod, register) is the
 template's: see its README. Commits follow Conventional Commits and are signed.

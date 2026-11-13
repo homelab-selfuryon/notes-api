@@ -1,0 +1,32 @@
+name: Preview
+
+# A preview environment for a pull request labelled `preview`: image and manifests signed with the
+# preview identity (homelab-selfuryon/github-workflows app-preview.yaml); the gitops ApplicationSet
+# creates <team>-pr-<n> for open PRs with that label and removes it when the label or the PR goes.
+#
+# Its own workflow, not a job in ci.yaml: a `labeled` event there would cancel the running checks
+# and report a `final-check` without them.
+# Not for forks (they must not get a token that can push), not in the template itself (not an app).
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, labeled]
+
+permissions: {}
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  preview:
+    if: >-
+      contains(github.event.pull_request.labels.*.name, 'preview') &&
+      (github.event.action != 'labeled' || github.event.label.name == 'preview') &&
+      github.event.pull_request.head.repo.full_name == github.repository &&
+      !github.event.repository.is_template
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+    uses: homelab-selfuryon/github-workflows/.github/workflows/app-preview.yaml@c49b40a6acc765b064daff0e0e8e9c3bc6486a37 # v1.0.1
