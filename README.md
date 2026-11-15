@@ -73,3 +73,5 @@ Against an unpublished platform-kit: `devenv -o platform-kit path:../platform-ki
 
 Delivery (preview per pull request labelled `preview`, release-please, tag → staging, promote → prod, register) is the
 template's: see its README. Commits follow Conventional Commits and are signed.
+
+<!-- preview label test, not to be merged -->
