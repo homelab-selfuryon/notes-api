@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.1](https://github.com/homelab-selfuryon/notes-api/compare/v0.1.0...v0.1.1) (2026-11-16)
+
+
+### Bug Fixes
+
+* **deps:** update rust crate jsonwebtoken to v12 ([#18](https://github.com/homelab-selfuryon/notes-api/issues/18)) ([472e72f](https://github.com/homelab-selfuryon/notes-api/commit/472e72f64089a07be80bc7a718cf6f1c4e6b1328))
+
 ## 0.1.0 (2026-11-11)
 
 
