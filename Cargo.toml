@@ -10,7 +10,6 @@ description = "Notes REST API on Postgres"
 anyhow = "1"
 async-trait = "0.1"
 axum = "0.8"
-chrono = { version = "0.4", default-features = false, features = ["serde"] }
 jsonwebtoken = { version = "12", default-features = false, features = [
   "aws_lc_rs",
 ] }
@@ -28,9 +27,10 @@ sqlx = { version = "0.9", default-features = false, features = [
   "migrate",
   "macros",
   "uuid",
-  "chrono",
+  "time",
 ] }
 thiserror = "2"
+time = { version = "0.3", features = ["serde", "formatting", "parsing"] }
 tokio = { version = "1", features = [
   "macros",
   "rt-multi-thread",

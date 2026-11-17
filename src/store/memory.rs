@@ -1,7 +1,7 @@
 use std::sync::Mutex;
 
 use async_trait::async_trait;
-use chrono::Utc;
+use time::OffsetDateTime;
 use uuid::Uuid;
 
 use super::{Note, NoteInput, Store, StoreError};
@@ -38,7 +38,7 @@ impl Store for MemoryStore {
     }
 
     async fn create(&self, input: NoteInput) -> Result<Note, StoreError> {
-        let now = Utc::now();
+        let now = OffsetDateTime::now_utc();
         let note = Note {
             id: Uuid::new_v4(),
             title: input.title,
@@ -55,7 +55,7 @@ impl Store for MemoryStore {
         Ok(notes.iter_mut().find(|n| n.id == id).map(|n| {
             n.title = input.title;
             n.body = input.body;
-            n.updated_at = Utc::now();
+            n.updated_at = OffsetDateTime::now_utc();
             n.clone()
         }))
     }
