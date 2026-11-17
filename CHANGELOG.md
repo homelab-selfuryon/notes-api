@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.2](https://github.com/homelab-selfuryon/notes-api/compare/v0.1.1...v0.1.2) (2026-11-17)
+
+
+### Bug Fixes
+
+* **deps:** replace chrono with time ([#20](https://github.com/homelab-selfuryon/notes-api/issues/20)) ([1819059](https://github.com/homelab-selfuryon/notes-api/commit/18190599201e618a70e128c5fefd62e79e567511))
+
 ## [0.1.1](https://github.com/homelab-selfuryon/notes-api/compare/v0.1.0...v0.1.1) (2026-11-16)
 
 
