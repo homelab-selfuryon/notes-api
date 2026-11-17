@@ -5,8 +5,8 @@ mod memory;
 mod postgres;
 
 use async_trait::async_trait;
-use chrono::{DateTime, Utc};
 use serde::{Deserialize, Serialize};
+use time::OffsetDateTime;
 use uuid::Uuid;
 
 pub use memory::MemoryStore;
@@ -20,8 +20,11 @@ pub struct Note {
     pub id: Uuid,
     pub title: String,
     pub body: String,
-    pub created_at: DateTime<Utc>,
-    pub updated_at: DateTime<Utc>,
+    /// RFC 3339 in JSON, UTC.
+    #[serde(with = "time::serde::rfc3339")]
+    pub created_at: OffsetDateTime,
+    #[serde(with = "time::serde::rfc3339")]
+    pub updated_at: OffsetDateTime,
 }
 
 /// What a client sends to create or replace a note.
