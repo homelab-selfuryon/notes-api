@@ -18,4 +18,4 @@ jobs:
       contents: read
       packages: read # platform-kit for cue
       id-token: write # octo-sts
-    uses: homelab-selfuryon/github-workflows/.github/workflows/app-register.yaml@c49b40a6acc765b064daff0e0e8e9c3bc6486a37 # v1.0.1
+    uses: homelab-selfuryon/github-workflows/.github/workflows/app-register.yaml@d06ae41266b8db3318692d5cb32977c56b0df347 # v1.1.0
