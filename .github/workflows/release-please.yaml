@@ -16,4 +16,4 @@ jobs:
     permissions:
       contents: read
       id-token: write # octo-sts
-    uses: homelab-selfuryon/github-workflows/.github/workflows/release-please.yaml@d06ae41266b8db3318692d5cb32977c56b0df347 # v1.1.0
+    uses: homelab-selfuryon/github-workflows/.github/workflows/release-please.yaml@355d9b419dbbc6772aee02003b14ee1496122e98 # v1.1.1
