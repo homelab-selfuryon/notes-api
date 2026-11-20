@@ -19,12 +19,12 @@ jobs:
     permissions:
       contents: read
       packages: read
-    uses: homelab-selfuryon/github-workflows/.github/workflows/rust-ci.yaml@d06ae41266b8db3318692d5cb32977c56b0df347 # v1.1.0
+    uses: homelab-selfuryon/github-workflows/.github/workflows/rust-ci.yaml@355d9b419dbbc6772aee02003b14ee1496122e98 # v1.1.1
 
   lint-workflows:
     permissions:
       contents: read
-    uses: homelab-selfuryon/github-workflows/.github/workflows/lint-workflows.yaml@d06ae41266b8db3318692d5cb32977c56b0df347 # v1.1.0
+    uses: homelab-selfuryon/github-workflows/.github/workflows/lint-workflows.yaml@355d9b419dbbc6772aee02003b14ee1496122e98 # v1.1.1
 
   # The single required status check (branch ruleset in platform-terraform/github).
   final-check:
