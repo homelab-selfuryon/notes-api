@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.1.3](https://github.com/homelab-selfuryon/notes-api/compare/v0.1.2...v0.1.3) (2026-11-25)
+
+
+### Bug Fixes
+
+* **db:** run the database on PostgreSQL 19 ([#31](https://github.com/homelab-selfuryon/notes-api/issues/31)) ([b58985c](https://github.com/homelab-selfuryon/notes-api/commit/b58985c5f4b3a30b7d6fdace9266d6af52f4bffb))
+
 ## [0.1.2](https://github.com/homelab-selfuryon/notes-api/compare/v0.1.1...v0.1.2) (2026-11-17)
 
 
