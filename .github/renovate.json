@@ -6,6 +6,11 @@
       "description": "The Containerfile build stage and rust-toolchain.toml name the same Rust version (devenv test checks it): one PR.",
       "matchDepNames": ["rust"],
       "groupName": "rust toolchain"
+    },
+    {
+      "description": "platform-kit renders what the app deploys (cue.mod/module.cue, with its devenv module in the same PR): a bump must ship, so its commit is fix(deps) and release-please cuts a patch release (chore commits release nothing).",
+      "matchPackageNames": ["homelab-selfuryon/platform-kit"],
+      "semanticCommitType": "fix"
     }
   ]
 }
