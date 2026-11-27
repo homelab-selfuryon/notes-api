@@ -29,4 +29,4 @@ jobs:
       contents: read
       packages: write
       id-token: write
-    uses: homelab-selfuryon/github-workflows/.github/workflows/app-preview.yaml@355d9b419dbbc6772aee02003b14ee1496122e98 # v1.1.1
+    uses: homelab-selfuryon/github-workflows/.github/workflows/app-preview.yaml@e7d5b1ed978b67aa2becd08d15d89537d11ec979 # v1.1.2
